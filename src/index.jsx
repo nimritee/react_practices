@@ -2,18 +2,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import LiComment from './LiComment.jsx';
 
-const commentArray = [
-  { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
-  { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
-  { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
-  { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" }
-];
-
 function handleChange() {
 
 }
 
 class Comment extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: '', commentArray: [
+        { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
+        { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
+        { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
+        { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" }
+      ]
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    if (event.keyCode == "13") {
+      let commentArray = this.state.commentArray;
+      commentArray.push({ "initialLetter": "N", "time": "now", "name": "Nimritee", "description": event.target.value });
+      this.setState({ commentArray: commentArray });
+    }
+  }
+
   render() {
     return (
       <div>
@@ -62,10 +77,10 @@ class Comment extends React.Component {
                 >
                   <div className="chat-group pd-0" style={{ padding: 0 }}>
                     <ul className="list-group">
-                      <LiComment commentData={commentArray} />
+                      <LiComment commentData={this.state.commentArray} />
                       <li className="list-group-item pd-0 border-0">
-                        <div class="chat-content-footer border-0">
-                          <input type="text" class="form-control align-self-center bd-0" placeholder="Message" onChange={handleChange()} ></input>
+                        <div className="chat-content-footer border-0">
+                          <input type="text" defaultValue="" className="form-control align-self-center bd-0" placeholder="Message" onKeyDown={this.handleChange}></input>
                           <nav>
                             <a href="#" data-toggle="tooltip" title="Mention"><i data-feather="at-sign"></i></a>
                             <a href="#" data-toggle="tooltip" title="Add GIF"><i data-feather="smile"></i></a>
