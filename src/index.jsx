@@ -88,9 +88,9 @@ class Comment extends React.Component {
                           <input type="text" defaultValue="" className="form-control align-self-center bd-0" placeholder="Message" value={this.state.value} onChange={this.handleChange}></input>
                           </form>
                           <nav>
-                          <a href="javascript:void(0)" data-toggle="tooltip" title="Mention"><i data-feather="at-sign"></i></a>
-                          <a href="javascript:void(0)" data-toggle="tooltip" title="Add GIF"><i data-feather="smile"></i></a>
-                          <a href="javascript:void(0)" data-toggle="tooltip" onClick={this.handleSubmit} title="Send"><i data-feather="send"></i></a>
+                          <a href="# " data-toggle="tooltip" title="Mention"><i data-feather="at-sign"></i></a>
+                          <a href="# " data-toggle="tooltip" title="Add GIF"><i data-feather="smile"></i></a>
+                          <a href="# " data-toggle="tooltip" onClick={this.handleSubmit} title="Send"><i data-feather="send"></i></a>
                           </nav>
                         </div>
                       </li>
