@@ -372,17 +372,17 @@
       margin-right: 10px; }
     .chat-group-divider::after {
       margin-left: 10px; }
+
+  .chat-content-footer> form{
+    width: 100%;
+  }
   
   .chat-content-footer {
     background-color: #fff;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-top: 1px solid rgba(72, 94, 144, 0.16);
     height: 60px;
     display: flex;
     justify-content: space-between; }
+    
     .chat-content-footer .chat-plus {
       width: 70px;
       display: flex;
