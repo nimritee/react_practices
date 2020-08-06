@@ -11,6 +11,13 @@ const LiComment = ({ commentData }) => {
                     <h6>
                         {innerData.name} <small>{innerData.time}</small>
                     </h6>
+                    <div class="dropdown-file">
+                        <a href="#" className="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
+                        <div className="dropdown-menu dropdown-menu-right">
+                            <a href="#" className="dropdown-item rename"><i data-feather="edit"></i>Edit</a>
+                            <a href="#" className="dropdown-item delete"><i data-feather="trash"></i>Delete</a>
+                        </div>
+                    </div>
                     <p>{innerData.description}</p>
                 </div>
             </div>

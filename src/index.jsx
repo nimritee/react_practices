@@ -22,6 +22,7 @@ class Comment extends React.Component {
   }
 
   handleChange(event) {
+    debugger
     if (event.keyCode == "13") {
       let commentArray = this.state.commentArray;
       commentArray.push({ "initialLetter": "N", "time": "now", "name": "Nimritee", "description": event.target.value });
@@ -84,7 +85,7 @@ class Comment extends React.Component {
                           <nav>
                             <a href="#" data-toggle="tooltip" title="Mention"><i data-feather="at-sign"></i></a>
                             <a href="#" data-toggle="tooltip" title="Add GIF"><i data-feather="smile"></i></a>
-                            <a href="#" data-toggle="tooltip" title="Send"><i data-feather="send"></i></a>
+                            <a href="#" data-toggle="tooltip" onClick={this.handleChange} title="Send"><i data-feather="send"></i></a>
                           </nav>
                         </div>
                       </li>
