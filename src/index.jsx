@@ -2,33 +2,34 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import LiComment from './LiComment.jsx';
 
-function handleChange() {
-
-}
-
 class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '', commentArray: [
+      value: '', 
+      commentArray: [
         { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
         { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
         { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
         { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" }
       ]
     };
-
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    debugger
-    if (event.keyCode == "13") {
-      let commentArray = this.state.commentArray;
-      commentArray.push({ "initialLetter": "N", "time": "now", "name": "Nimritee", "description": event.target.value });
-      this.setState({ commentArray: commentArray });
+      this.setState({ value: event.target.value });
     }
-  }
+
+    handleSubmit = (event) => {
+        if(this.state.value.length>0)
+        {
+          event.preventDefault();
+          let commentArray = [...this.state.commentArray];
+          commentArray.push({ "initialLetter": "N", "time": "now", "name": "Nimritee", "description": this.state.value })
+          this.setState({commentArray,value:''})
+        }
+    } 
 
   render() {
     return (
@@ -81,11 +82,13 @@ class Comment extends React.Component {
                       <LiComment commentData={this.state.commentArray} />
                       <li className="list-group-item pd-0 border-0">
                         <div className="chat-content-footer border-0">
-                          <input type="text" defaultValue="" className="form-control align-self-center bd-0" placeholder="Message" onKeyDown={this.handleChange}></input>
+                        <form onSubmit={this.handleSubmit}>
+                          <input type="text" defaultValue="" className="form-control align-self-center bd-0" placeholder="Message" value={this.state.value} onChange={this.handleChange}></input>
+                          </form>
                           <nav>
-                            <a href="#" data-toggle="tooltip" title="Mention"><i data-feather="at-sign"></i></a>
-                            <a href="#" data-toggle="tooltip" title="Add GIF"><i data-feather="smile"></i></a>
-                            <a href="#" data-toggle="tooltip" onClick={this.handleChange} title="Send"><i data-feather="send"></i></a>
+                          <a href="#" data-toggle="tooltip" title="Mention"><i data-feather="at-sign"></i></a>
+                          <a href="#" data-toggle="tooltip" title="Add GIF"><i data-feather="smile"></i></a>
+                          <a href="#" data-toggle="tooltip" onClick={this.handleSubmit} title="Send"><i data-feather="send"></i></a>
                           </nav>
                         </div>
                       </li>
