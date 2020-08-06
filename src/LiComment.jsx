@@ -1,8 +1,8 @@
 import React from 'react';
 
 const LiComment = ({ commentData }) => {
-    var comments = commentData.map(function (innerData) {
-        return (<li className="list-group-item">
+    return commentData.map(function (innerData,index) {
+        return (<li className="list-group-item" key={"test-"+index}>
             <div className="media">
                 <div className="avatar">
                     <span className="avatar-initial rounded-circle">{innerData.initialLetter}</span>
@@ -23,7 +23,6 @@ const LiComment = ({ commentData }) => {
             </div>
         </li>)
     })
-    return comments;
 }
 
 export default LiComment

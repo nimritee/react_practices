@@ -16,11 +16,13 @@ class Comment extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange(event) {
       this.setState({ value: event.target.value });
     }
 
     handleSubmit = (event) => {
+      event.preventDefault();
         if(this.state.value.length>0)
         {
           event.preventDefault();
@@ -31,6 +33,7 @@ class Comment extends React.Component {
     } 
 
   render() {
+    console.log(this.state.commentArray)
     return (
       <div>
         <div className="app chat mg-t-10">
@@ -79,8 +82,8 @@ class Comment extends React.Component {
                   <div className="chat-group pd-0" style={{ padding: 0 }}>
                     <ul className="list-group">
                       <LiComment commentData={this.state.commentArray} />
-                      <li className="list-group-item pd-0 border-0">
-                        <div className="chat-content-footer border-0">
+                      <li className="list-group-item " style={{ padding: 0 }}>
+                        <div className="chat-content-footer" >
                         <form onSubmit={this.handleSubmit}>
                           <input type="text" defaultValue="" className="form-control align-self-center bd-0" placeholder="Message" value={this.state.value} onChange={this.handleChange}></input>
                           </form>
