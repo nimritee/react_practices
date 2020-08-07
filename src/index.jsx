@@ -6,7 +6,7 @@ class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '', 
+      value: '',
       commentArray: [
         { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
         { "initialLetter": "N", "time": "Friday", "name": "Nimritee", "description": "why has the sales desc" },
@@ -18,19 +18,18 @@ class Comment extends React.Component {
   }
 
   handleChange(event) {
-      this.setState({ value: event.target.value });
-    }
+    this.setState({ value: event.target.value });
+  }
 
-    handleSubmit = (event) => {
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if (this.state.value.length > 0) {
       event.preventDefault();
-        if(this.state.value.length>0)
-        {
-          event.preventDefault();
-          let commentArray = [...this.state.commentArray];
-          commentArray.push({ "initialLetter": "N", "time": "now", "name": "Nimritee", "description": this.state.value })
-          this.setState({commentArray,value:''})
-        }
-    } 
+      let commentArray = [...this.state.commentArray];
+      commentArray.push({ "initialLetter": "N", "time": "now", "name": "Nimritee", "description": this.state.value })
+      this.setState({ commentArray, value: '' })
+    }
+  }
 
   render() {
     console.log(this.state.commentArray)
@@ -83,15 +82,21 @@ class Comment extends React.Component {
                     <ul className="list-group">
                       <LiComment commentData={this.state.commentArray} />
                       <li className="list-group-item " style={{ padding: 0 }}>
-                        <div className="chat-content-footer" >
-                        <form onSubmit={this.handleSubmit}>
-                          <input type="text" defaultValue="" className="form-control align-self-center bd-0" placeholder="Message" value={this.state.value} onChange={this.handleChange}></input>
+                        <div className="profile-update-option bg-white ht-50 bd d-flex justify-content-end">
+                          <div className="d-flex align-items-center pd-x-20 mg-r-auto">
+                          <form onSubmit={this.handleSubmit}>
+                            <input type="text" defaultValue="" className="form-control align-self-center bd-0" placeholder="Message" value={this.state.value} onChange={this.handleChange}></input>
                           </form>
-                          <nav>
-                          <a href="# " data-toggle="tooltip" title="Mention"><i data-feather="at-sign"></i></a>
-                          <a href="# " data-toggle="tooltip" title="Add GIF"><i data-feather="smile"></i></a>
-                          <a href="# " data-toggle="tooltip" onClick={this.handleSubmit} title="Send"><i data-feather="send"></i></a>
-                          </nav>
+                          </div>
+                          <div class="wd-50 bd-l d-flex align-items-center justify-content-center">
+                            <a href="# " className="link-03" data-toggle="tooltip" title="Mention"><i data-feather="at-sign"></i></a>
+                          </div>
+                          <div class="wd-50 bd-l d-flex align-items-center justify-content-center">
+                            <a href="# " className="link-03" data-toggle="tooltip" title="Add GIF"><i data-feather="smile"></i></a>
+                          </div>
+                          <div className="wd-50 bd-l d-flex align-items-center justify-content-center">
+                            <a href="# " className="link-03" data-toggle="tooltip" onClick={this.handleSubmit} title="Send"><i data-feather="send"></i></a>
+                          </div>
                         </div>
                       </li>
                     </ul>
